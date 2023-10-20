@@ -35,12 +35,11 @@ function VcGatedDapp() {
     setLoading(true);
     const createCheckoutSessionRes =
       await circle.checkoutSessions.createCheckoutSession({
-        successUrl: "https://www.example.com/success",
+        successUrl: "https://zkemployee.vercel.app/success",
         amount: {
           amount: amount,
           currency: currency,
         },
-        
       });
 
     console.log("Checkout session created", createCheckoutSessionRes)

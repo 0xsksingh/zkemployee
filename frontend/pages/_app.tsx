@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Dock Verifiable Credentials Demo</title>
+        <title>ZkEmployee</title>
       </Head>
       <ChakraProvider>
             <div>
