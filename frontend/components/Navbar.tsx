@@ -14,7 +14,9 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  useColorMode
 } from "@chakra-ui/react";
+
 import {
   HamburgerIcon,
   CloseIcon,
@@ -22,9 +24,13 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 import React from "react";
+import { FaRegMoon, FaRegSun } from 'react-icons/fa';
+
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
+  const { colorMode, toggleColorMode } = useColorMode();
+
 
   return (
     <Box>
@@ -69,12 +75,22 @@ export default function WithSubnavigation() {
           </Flex>
         </Flex>
 
+
+
         <Stack
-          flex={{ base: 1, md: 0 }}
+          flex={{ base: 1, md: 1 }}
           justify={"flex-end"}
           direction={"row"}
+          align={"center"}
           spacing={6}
         >
+          <div className='flex gap-4'>
+            <Button
+              onClick={toggleColorMode}
+            >
+              {colorMode === 'light' ? <FaRegMoon /> : <FaRegSun />}
+            </Button>
+          </div>
           <h2>Connect Wallet</h2>
         </Stack>
       </Flex>
