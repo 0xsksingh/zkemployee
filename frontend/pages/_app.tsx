@@ -10,8 +10,6 @@ import SmallWithSocial from "../components/Footer";
 import '../public/fonts/satoshi.css';
 
 function MyApp({ Component, pageProps }) {
-    
-  require("dotenv").config();
 
   return (
     <>

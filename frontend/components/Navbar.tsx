@@ -20,8 +20,7 @@ import {
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
-} from "@chakra-ui/icons"
-import { ConnectButton } from "@rainbow-me/rainbowkit"
+} from "@chakra-ui/icons";
 import React from "react";
 
 export default function WithSubnavigation() {
@@ -76,7 +75,7 @@ export default function WithSubnavigation() {
           direction={"row"}
           spacing={6}
         >
-          <ConnectButton />
+          <h2>Connect Wallet</h2>
         </Stack>
       </Flex>
 
