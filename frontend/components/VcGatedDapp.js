@@ -16,12 +16,6 @@ import {
   Text,
   Select,
 } from "@chakra-ui/react";
-import {
-  getAccount,
-  readContract,
-  writeContract,
-  waitForTransaction,
-} from "@wagmi/core";
 import demoAbi from "./demoSmartContract/demoAbi.json";
 import { Circle, CircleEnvironments, PaymentIntentCreationRequest } from "@circle-fin/circle-sdk";
 import Checkout from "./Circle/Checkout";
@@ -30,13 +24,7 @@ import WalletCard from "./WalletCard";
 function VcGatedDapp() {
   const chain = polygonZkEvmTestnet;
   const chainId = polygonZkEvmTestnet.id;
-
-  const [publicClient, setPublicClient] = useState();
-  const [connectedAddress, setConnectedAddress] = useState();
-  const [addressIsConnected, setAddressIsConnected] = useState(false);
-  const [currentBlockNumber, setCurrentBlockNumber] = useState();
-  const [showConnectionInfo, setShowConnectionInfo] = useState(false);
-
+  
   // variables specific to demo
   const myZkEVMSmartContractAddress =
     "0x3Baf2aa2aD287949590cD39a731fD17606c7D10F";
