@@ -24,11 +24,8 @@ function App() {
             >
               <CardBody style={{ paddingBottom: 0 }}>
                 <p>
-                  This is a fullstack template for creating a Polygon ID VC{" "}
-                  <a href="https://0xpolygonid.github.io/tutorials/#core-concepts-of-polygon-id-verifiable-credentials-identity-holder-issuer-and-verifier-triangle-of-trust">
-                    (Verifiable Credential)
-                  </a>{" "}
-                  gated dapp. Prove that you hold the Degree VC to access the dapp
+                  This verifies your Polygon ID VC{" "}
+                  gated dapp. Prove that you hold the Employee Verified Credentials to access the dapp
                 </p>
 
                 <PolygonIDVerifier

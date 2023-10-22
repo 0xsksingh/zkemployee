@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { createPublicClient, http } from "viem";
-import { polygonZkEvmTestnet } from "viem/chains";
 import {
   Box,
   Container,
@@ -22,21 +20,6 @@ import Checkout from "./Circle/Checkout";
 import WalletCard from "./WalletCard";
 
 function VcGatedDapp() {
-  const chain = polygonZkEvmTestnet;
-  const chainId = polygonZkEvmTestnet.id;
-  
-  // variables specific to demo
-  const myZkEVMSmartContractAddress =
-    "0x3Baf2aa2aD287949590cD39a731fD17606c7D10F";
-
-  const contractConfig = {
-    address: myZkEVMSmartContractAddress,
-    abi: demoAbi,
-    chainId,
-  };
-
-
-
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
 
