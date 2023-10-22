@@ -49,6 +49,7 @@ function PolygonIDVerifier({
   const getQrCodeApi = (sessionId) =>
     serverUrl + `/api/get-auth-qr?sessionId=${sessionId}`;
 
+    console.log(getQrCodeApi(sessionId),"getQrCodeApi(sessionId)");
   const socket = io(serverUrl);
 
   useEffect(() => {

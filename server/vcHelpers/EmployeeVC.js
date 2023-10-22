@@ -4,15 +4,18 @@ module.exports = {
     EmployeeVC: () => (
       {
         "circuitId": "credentialAtomicQuerySigV2",
-        "id": 1698559881,
+        "id": 1698689015,
         "query": {
           "allowedIssuers": [
             "*"
           ],
           "context": "https://schema.dock.io/ProofOfEmployment-V1698558436855.json-ld",
           "credentialSubject": {
-            "companyName": {}
+            "companyName": {
+              "$eq": "Google"
+            }
           },
+          "skipClaimRevocationCheck": true,
           "type": "ProofOfEmployment"
         }
       }

@@ -47,75 +47,7 @@ function VcGatedDapp() {
     chainId,
   };
 
-  const [count, setCount] = useState();
-  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    // A Public Client is an interface to "public" JSON-RPC API methods
-    // such as retrieving block numbers, transactions, reading from smart contracts, etc
-    const newPublicClient = createPublicClient({
-      chain,
-      transport: http(),
-    });
-    setPublicClient(newPublicClient);
-
-    // interval check whether user has connected or disconnected wallet
-    const interval = setInterval(() => {
-      const { address, isConnected } = getAccount();
-      setConnectedAddress(address);
-      setAddressIsConnected(isConnected);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    if (publicClient) {
-      const readCount = async () => {
-        await readCounterValue();
-      };
-      const checkCurrentBlockNumber = async () => {
-        const blockNumber = await publicClient.getBlockNumber();
-        setCurrentBlockNumber(blockNumber);
-      };
-
-      readCount();
-      checkCurrentBlockNumber();
-    }
-  }, [publicClient]);
-
-  async function readCounterValue() {
-    try {
-      const data = await readContract({
-        ...contractConfig,
-        functionName: "retrieve",
-        chainId,
-      });
-      const newCount = JSON.parse(data);
-      setCount(newCount);
-      return newCount;
-    } catch (err) {
-      console.log("Error: ", err);
-    }
-  }
-
-  const incrementCounter = async () => {
-    if (addressIsConnected) {
-      const { hash } = await writeContract({
-        ...contractConfig,
-        functionName: "increment",
-        // args: [69],
-      });
-      setIsLoading(true);
-      const data = await waitForTransaction({
-        hash,
-      });
-      await readCounterValue();
-      setIsLoading(false);
-    } else {
-      alert("Connect wallet to update blockchain data");
-    }
-  };
 
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
