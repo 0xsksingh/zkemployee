@@ -4,7 +4,7 @@ import { ChakraProvider } from "@chakra-ui/react"
 import "../styles/globals.css";
 import WithSubnavigation from "../components/Navbar"
 import SmallWithSocial from "../components/Footer";
-
+import { ToastContainer } from 'react-toastify';
 
 // Fonts
 import '../public/fonts/satoshi.css';
@@ -19,6 +19,18 @@ function MyApp({ Component, pageProps }) {
       <ChakraProvider>
             <div>
             <WithSubnavigation />
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+              />
               <Component {...pageProps} />
               <SmallWithSocial/>
             </div>

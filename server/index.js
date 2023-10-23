@@ -4,7 +4,7 @@ const getRawBody = require("raw-body");
 const { Server } = require("socket.io");
 const cors = require("cors");
 const { humanReadableAuthReason, proofRequest } = require("./employProofRequest");
-// const { humanReadableAuthReason, proofRequest } = require("./proofRequest");
+
 require("dotenv").config();
 
 const app = express();

@@ -14,19 +14,18 @@ import {
   Text,
   Select,
 } from "@chakra-ui/react";
-import demoAbi from "./demoSmartContract/demoAbi.json";
 import { Circle, CircleEnvironments, PaymentIntentCreationRequest } from "@circle-fin/circle-sdk";
 import Checkout from "./Circle/Checkout";
 import WalletCard from "./WalletCard";
 
-function VcGatedDapp() {
+function VcGatedDapp(companyName) {
 
   return (
     <div id="vc-gated-dapp">
       <Box background="black" color="white" py={4}>
         <Container maxW={"80%"}>
           <Flex justifyContent="space-between">
-            <Heading>Welcome Company Officials</Heading>
+            <Heading>Welcome Employees of {companyName.companyname} </Heading>
           </Flex>
         </Container>
       </Box>

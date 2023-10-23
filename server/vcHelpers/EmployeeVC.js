@@ -1,5 +1,5 @@
 module.exports = {
-    // VC type: UniversityDegreesVC-6
+    // VC type: EmployeeVC-V7
     // https://schema.dock.io/EmployeeVC-V7-1693856303133.json
     EmployeeVC: () => (
       {

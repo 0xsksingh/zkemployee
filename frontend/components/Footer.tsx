@@ -44,6 +44,7 @@ const SocialButton = ({
 
 export default function SmallWithSocial() {
   return (
+    <div className="fixed bottom-0 w-full p-4">
     <Box
       bg={useColorModeValue("gray.50", "gray.900")}
       color={useColorModeValue("gray.700", "gray.200")}
@@ -56,6 +57,7 @@ export default function SmallWithSocial() {
         spacing={4}
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
+        className="my-2"
       >
         <Text>© 2023 Made with ❤️ @ Polygon devxam</Text>
         <Stack direction={"row"} spacing={6}>
@@ -71,5 +73,6 @@ export default function SmallWithSocial() {
         </Stack>
       </Container>
     </Box>
+    </div>
   )
 }

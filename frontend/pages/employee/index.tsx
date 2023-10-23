@@ -12,7 +12,7 @@ function Comapany() {
   return (
     <ChakraProvider theme={theme}>
       <CSSReset />
-      <h2 className='text-center text-lg text-green-400'>Select the Enrolled University</h2>
+      <h2 className='text-center text-lg text-green-400'>Select the Enrolled Company</h2>
       <div style={{ display: 'flex', justifyContent: 'center', margin: 'auto' }} className="gap-8">
       
         

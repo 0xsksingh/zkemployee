@@ -3,16 +3,20 @@ import { useState } from 'react';
 import PolygonIDVerifier from "../../components/PolygonIDVerifier";
 import VcGatedDapp from "../../components/VcGatedDapp";
 import { Center, Card, Image, CardBody, Container } from "@chakra-ui/react";
+import { useRouter } from "../../node_modules/next/router";
 
 function App() {
   // if you're developing and just want to see the dapp without going through the Polygon ID flow,
   // temporarily set this to "true" to ignore the Polygon ID check and go straight to the dapp page
-  const [provedAccessBirthday, setProvedAccessBirthday] = useState(false);
+  const [provedAccessBirthday, setProvedAccessBirthday] = useState(true);
+  const router = useRouter();
+  const companyname = router.query.index;
+
   return (
     <>
       {provedAccessBirthday ? (
         <>
-        <VcGatedDapp />
+        <VcGatedDapp companyname={companyname} />
         </>
       ) : (
         <Center className="vc-check-page">
@@ -24,8 +28,8 @@ function App() {
             >
               <CardBody style={{ paddingBottom: 0 }}>
                 <p>
-                  This verifies your Polygon ID VC{" "}
-                  gated dapp. Prove that you hold the Employee Verified Credentials to access the dapp
+                  This verifies that you are a real employee of {" "}
+                  {companyname}. Prove that you hold the Employee Verified Credentials to proceed ahead 🔐
                 </p>
 
                 <PolygonIDVerifier

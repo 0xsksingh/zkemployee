@@ -1,23 +1,22 @@
 import { Box, Heading, Input, Button, Text } from '@chakra-ui/react';
 import axios from 'axios';
-import { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { uuid } from 'uuidv4';
-import { Radio, RadioGroup } from '@chakra-ui/react'
-import { Stack } from '@chakra-ui/react'
+import { Radio, RadioGroup, Stack } from '@chakra-ui/react';
 
 const WalletCard = () => {
   const [walletBalance, setWalletBalance] = useState(null);
   const [transferAmount, setTransferAmount] = useState('');
   const [transferStatus, setTransferStatus] = useState('');
   const [pointer, setPointer] = useState(false);
-  const [ciphertext, setCiphertext] = useState(''); 
+  const [ciphertext, setCiphertext] = useState('');
   const [walletId, setWalletId] = useState('');
-  const [tokenId, setTokenId] = useState(''); 
-  const [ destinationAddress, setDestinationAddress] = useState('');
-  const [walletsetname, setWalletSetName] = useState('');
-  const [creationwalletid , setCreationWalletId] = useState('');
-const [blockchain , setBlockchain] = useState('MATIC_MUMBAI');
-const [walletcount , setWalletCount] = useState('1');
+  const [tokenId, setTokenId] = useState('');
+  const [destinationAddress, setDestinationAddress] = useState('');
+  const [walletSetName, setWalletSetName] = useState('');
+  const [creationWalletId, setCreationWalletId] = useState('');
+  const [blockchain, setBlockchain] = useState('MATIC-MUMBAI');
+  const [walletCount, setWalletCount] = useState('1');
 
   const fetchCipherText = async () => {
     try {
@@ -26,13 +25,16 @@ const [walletcount , setWalletCount] = useState('1');
     } catch (error) {
       console.error(error);
     }
-  }
-fetchCipherText();
+  };
 
-const handleblockchain =() => (e) => {
-  setBlockchain(e.target.value);
-  console.log(blockchain);
-}
+  useEffect(() => {
+    fetchCipherText();
+  }, [pointer]);
+
+  const handleBlockchain = (value) => {
+    setBlockchain(value);
+  };
+
   const fetchWalletBalance = async () => {
     try {
       const response = await axios.get(`https://api.circle.com/v1/w3s/wallets/${walletId}/balances`, {
@@ -41,7 +43,6 @@ const handleblockchain =() => (e) => {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_APP_CIRCLE_API}`,
         },
       });
-      console.log(response.data);
       setWalletBalance(response.data);
       setPointer(!pointer);
     } catch (error) {
@@ -50,7 +51,6 @@ const handleblockchain =() => (e) => {
   };
 
   const initiateTransfer = async () => {
-    console.log( uuid(), process.env.NEXT_PUBLIC_APP_SRT, transferAmount, walletId, tokenId, destinationAddress);
     try {
       const response = await axios.post('https://api.circle.com/v1/w3s/developer/transactions/transfer', {
         idempotencyKey: uuid(),
@@ -66,66 +66,59 @@ const handleblockchain =() => (e) => {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_APP_CIRCLE_API}`,
         },
       });
-      console.log(response, "transfer response");
       setTransferStatus('Transfer initiated successfully.');
+      console.log(response, "transfer response");
     } catch (error) {
       console.error(error);
       setTransferStatus('Transfer failed. Check the console for details.');
     }
   };
 
-  useEffect(() => {
-    fetchCipherText();
-  }
-  , [pointer]);
-
   const createWalletset = async () => {
-
     const options = {
       method: 'POST',
       headers: {
         accept: 'application/json',
         'content-type': 'application/json',
-        authorization: `Bearer ${process.env.NEXT_PUBLIC_APP_CIRCLE_API}`
+        authorization: `Bearer ${process.env.NEXT_PUBLIC_APP_CIRCLE_API}`,
       },
       body: JSON.stringify({
         idempotencyKey: uuid(),
         entitySecretCiphertext: ciphertext,
-        name: walletsetname,
-      })
+        name: walletSetName,
+      }),
     };
-    
+
     fetch('https://api.circle.com/v1/w3s/developer/walletSets', options)
       .then(response => response.json())
       .then(response => console.log(response))
       .catch(err => console.error(err));
-  }
-
-  const createWallet = async () => {
-
-  const options = {
-    method: 'POST',
-    headers: {
-      accept: 'application/json',
-      'content-type': 'application/json',
-      authorization: `Bearer ${process.env.NEXT_PUBLIC_APP_CIRCLE_API}`
-    },
-    body: JSON.stringify({
-      idempotencyKey: uuid(),
-      blockchains: [blockchain],
-      count: walletcount,
-      entitySecretCiphertext: ciphertext,
-      metadata: [{name: 'My Wallet 1', refId: 'grouptransaction123'}],
-      walletSetId: walletId
-    })
   };
 
-  fetch('https://api.circle.com/v1/w3s/developer/wallets', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
+  const createWallet = async () => {
+    const options = {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        authorization: `Bearer ${process.env.NEXT_PUBLIC_APP_CIRCLE_API}`,
+      },
+      body: JSON.stringify({
+        idempotencyKey: uuid(),
+        blockchains: [blockchain],
+        count: walletCount,
+        entitySecretCiphertext: ciphertext,
+        metadata: [{ name: 'My Wallet 1', refId: 'grouptransaction123' }],
+        walletSetId: walletId,
+      }),
+    };
 
-  }
+    fetch('https://api.circle.com/v1/w3s/developer/wallets', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error(err));
+  };
+
   return (
     <Box p={4} borderWidth="1px" borderRadius="md">
       <Heading as="h2" size="lg">Wallet Information</Heading>
@@ -138,33 +131,33 @@ const handleblockchain =() => (e) => {
       <Button colorScheme="blue" onClick={fetchWalletBalance}>Check Balance</Button>
 
       <Heading as="h2" size="lg">Create WalletSet</Heading>
-      <Input 
+      <Input
         placeholder="WalletSet Name"
-        value={walletsetname}
+        value={walletSetName}
         onChange={(e) => setWalletSetName(e.target.value)}
       />
-      <Button colorScheme="blue" onClick={createWalletset}>CreateWalletSet</Button>
+      <Button colorScheme="blue" onClick={createWalletset}>Create WalletSet</Button>
 
-    <Input 
+      <Input
         placeholder="WalletSet ID"
-        value={creationwalletid}
+        value={creationWalletId}
         onChange={(e) => setCreationWalletId(e.target.value)}
       />
 
-    <RadioGroup onChange={handleblockchain()} value={blockchain}>
-          <Stack direction='row'>
-            <Radio value='MATIC-MUMBAI'>MATIC-MUMBAI</Radio>
-            <Radio value='ETH_GOERLI'>ETH_GOERLI</Radio>
-            <Radio value='AVAX-FUJI'>AVAX-FUJI</Radio>
-          </Stack>
+      <RadioGroup value={blockchain} onChange={(value) => handleBlockchain(value)}>
+        <Stack direction='row'>
+          <Radio value='MATIC-MUMBAI'>MATIC-MUMBAI</Radio>
+          <Radio value='ETH-GOERLI'>ETH-GOERLI</Radio>
+          <Radio value='AVAX-FUJI'>AVAX-FUJI</Radio>
+        </Stack>
       </RadioGroup>
-      
+
       <Input
         placeholder="Wallet Count"
-        value={walletId}
-        onChange={(e) => setWalletId(e.target.value)}
+        value={walletCount}
+        onChange={(e) => setWalletCount(e.target.value)}
       />
-      <Button colorScheme="blue" onClick={createWallet}>CreateWallet</Button>
+      <Button colorScheme="blue" onClick={createWallet}>Create Wallet</Button>
 
       {walletBalance?.data.tokenBalances.map((tokenBalance, index) => (
         <Box key={index} borderWidth="1px" borderRadius="md" p={2} mt={2}>
@@ -183,8 +176,8 @@ const handleblockchain =() => (e) => {
         />
         <Input
           placeholder="Wallet ID"
-          value={walletcount}
-          onChange={(e) => setWalletCount(e.target.value)}
+          value={walletId}
+          onChange={(e) => setWalletId(e.target.value)}
         />
         <Input
           placeholder="Token ID"

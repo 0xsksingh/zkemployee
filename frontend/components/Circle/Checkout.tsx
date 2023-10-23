@@ -5,8 +5,9 @@ import '@circle-fin/circle-widgets-sdk/lib/dist/components.css';
 import '@circle-fin/circle-widgets-sdk/lib/dist/fonts.css';
 
 const Checkout = ({
-    data
-}) => {
+    data,
+    merchantName
+} ) => {
     return (
         <div>
             <CircleCheckout
@@ -20,7 +21,7 @@ const Checkout = ({
                     console.log("Res", res);
                 }}
                 options={{
-                    merchantName: 'Google'
+                    merchantName: {merchantName}
                 }}
             />
         </div>

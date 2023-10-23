@@ -167,21 +167,13 @@ function PolygonIDVerifier({
 
             <ModalFooter>
               <Button
-                fontSize={"10px"}
+                fontSize={"15px"}
                 margin={1}
                 colorScheme="purple"
                 onClick={() => openInNewTab(linkDownloadPolygonIDWalletApp)}
               >
                 Download the Polygon ID Wallet App{" "}
                 <ExternalLinkIcon marginLeft={2} />
-              </Button>
-              <Button
-                fontSize={"10px"}
-                margin={1}
-                colorScheme="purple"
-                onClick={() => openInNewTab(issuerOrHowToLink)}
-              >
-                Get a {credentialType} VC <ExternalLinkIcon marginLeft={2} />
               </Button>
             </ModalFooter>
           </ModalContent>
