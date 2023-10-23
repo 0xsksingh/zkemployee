@@ -8,7 +8,7 @@ import {
   VisuallyHidden,
 } from "@chakra-ui/react"
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa"
-import { ReactNode } from "react"
+import { ReactNode } from "react";
 
 const SocialButton = ({
   children,
@@ -43,11 +43,10 @@ const SocialButton = ({
 }
 
 export default function SmallWithSocial() {
+
   return (
-    <div className="fixed bottom-0 w-full p-4">
+    <div className="fixed bottom-0 w-full p-4 bg-transparent">
     <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}
     >
       <Container
         as={Stack}
@@ -61,14 +60,11 @@ export default function SmallWithSocial() {
       >
         <Text>© 2023 Made with ❤️ @ Polygon devxam</Text>
         <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Twitter"} href={"#"}>
+          <SocialButton label={"Twitter"} href={"www.twitter.com/0xkamal7"}>
             <FaTwitter />
           </SocialButton>
           <SocialButton label={"YouTube"} href={"#"}>
             <FaYoutube />
-          </SocialButton>
-          <SocialButton label={"Instagram"} href={"#"}>
-            <FaInstagram />
           </SocialButton>
         </Stack>
       </Container>

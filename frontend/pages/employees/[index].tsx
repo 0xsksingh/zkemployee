@@ -4,17 +4,22 @@ import PolygonIDVerifier from "../../components/PolygonIDVerifier";
 import VcGatedDapp from "../../components/VcGatedDapp";
 import { Center, Card, Image, CardBody, Container } from "@chakra-ui/react";
 import { useRouter } from "../../node_modules/next/router";
+import {  toast } from 'react-toastify';
 
 function App() {
-  // if you're developing and just want to see the dapp without going through the Polygon ID flow,
-  // temporarily set this to "true" to ignore the Polygon ID check and go straight to the dapp page
-  const [provedAccessBirthday, setProvedAccessBirthday] = useState(true);
+
+  const [provedEmployee, setProvedEmployee] = useState(false);
   const router = useRouter();
   const companyname = router.query.index;
 
+  const notify = () => {
+    toast.success("You are a verified employee of " + companyname);
+    setProvedEmployee(!provedEmployee);
+  }
+
   return (
     <>
-      {provedAccessBirthday ? (
+      {provedEmployee ? (
         <>
         <VcGatedDapp companyname={companyname} />
         </>
@@ -31,7 +36,6 @@ function App() {
                   This verifies that you are a real employee of {" "}
                   {companyname}. Prove that you hold the Employee Verified Credentials to proceed ahead 🔐
                 </p>
-
                 <PolygonIDVerifier
                   publicServerURL={
                     process.env.NEXT_PUBLIC_APP_VERIFICATION_SERVER_PUBLIC_URL
@@ -39,11 +43,11 @@ function App() {
                   localServerURL={
                     process.env.NEXT_PUBLIC_APP_VERIFICATION_SERVER_LOCAL_HOST_URL
                   }
-                  credentialType={"KYCAgeCredential"}
+                  credentialType={"ProofOfEmployment"}
                   issuerOrHowToLink={
                     "https://oceans404.notion.site/How-to-get-a-Verifiable-Credential-f3d34e7c98ec4147b6b2fae79066c4f6?pvs=4"
                   }
-                  onVerificationResult={setProvedAccessBirthday}
+                  onVerificationResult={notify}
                 />
                 <Image
                   src="https://bafybeibcgo5anycve5flw6pcz5esiqkvrzlmwdr37wcqu33u63olskqkze.ipfs.nftstorage.link/"

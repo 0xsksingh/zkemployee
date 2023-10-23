@@ -1,4 +1,4 @@
-# ZkEmployee 👨🏻‍💻 - Your Gateway to Verifiable Work Credentials on the Blockchain
+# ZkEmployee 👨🏻‍💻 - Your Gateway to ZK Verifiable Work Credentials on the Blockchain
 
 *Unlocking the Future of Work Verification with Polygon ID, Dock.io, and Circle Payments*
 
@@ -8,6 +8,9 @@ https://certs.dock.io/
 
 https://schema-builder.polygonid.me/
 
+https://schema.dock.io/ProofOfEmployment-V1-1698558436855.json
+
+https://schema.dock.io/ProofOfEmployment-V1698558436855.json-ld
 
 ### Introduction:
 In a world riddled with academic fraud and credential misrepresentation, ZkEmployee 👨🏻‍💻 emerges as a beacon of trust and innovation. Our revolutionary platform harnesses the power of Polygon ID, Dock.io, and Circle Payments to securely deliver verifiable work credentials to your PolygonID wallet. Say goodbye to counterfeit degrees and identity theft—ZkEmployee 👨🏻‍💻 is here to redefine work verification.
@@ -18,6 +21,7 @@ In today's society, fraudulent academic degrees, particularly in rural areas, pr
 When individuals apply for jobs, companies face a dilemma: either blindly trust the information provided on resumes or invest time and resources into verifying each candidate's academic background with universities. This inefficiency not only hampers the hiring process but also allows dishonest individuals to thrive.
 
 ### Features:
+
 #### 1. Verifiable Work Credentials:
 ZkEmployee 👨🏻‍💻 empowers companies and enterprises to create and issue verified work credentials for their employees. With our platform, organizations can transition from traditional work experience records to secure, blockchain-backed certificates.
 
@@ -29,6 +33,26 @@ Our platform enables employees to share only the necessary attributes, such as c
 
 #### 4. Empowering Financial Transactions using Circle:
 With your work credentials stored in your PolygonID wallet, financial transactions become a breeze. Users can securely pay and receive money with ease using Circle Payments. Circle offers global payment solutions, including cryptocurrency and card payment options using USDC, making financial transactions smoother than ever.
+
+## Code Utilisation
+
+### Circle 
+
+| Component / SDK                 | GitHub Link                                             |
+| ------------------------------  | ------------------------------------------------------- |
+| Circle Checkout SDK             | [Checkout.tsx](https://github.com/0xsksingh/zkemployee/blob/master/frontend/components/Circle/Checkout.tsx) |
+| Cross-Chain Payments            | [CreatePayment.tsx](https://github.com/0xsksingh/zkemployee/blob/master/frontend/components/CreatePayment.tsx) |
+| Developer Controlled Wallets    | [WalletCard.tsx](https://github.com/0xsksingh/zkemployee/blob/master/frontend/components/WalletCard.tsx) |
+
+### PolygonID
+
+| Component / SDK                 | GitHub Link                                             |
+| ------------------------------  | ------------------------------------------------------- |
+| PolygonID Verifier              | [PolygonIDVerifier.js](https://github.com/0xsksingh/zkemployee/blob/master/frontend/components/PolygonIDVerifier.js) |
+| proveemployee                   | [employees/%5Bindex%5D.tsx#L11](https://github.com/0xsksingh/zkemployee/blob/master/frontend/pages/employees/%5Bindex%5D.tsx#L11) |
+| Employee VC Request            | [EmployeeVC.js](https://github.com/0xsksingh/zkemployee/blob/master/server/vcHelpers/EmployeeVC.js) |
+| employeeProofofreq uest         | [employProofRequest.js](https://github.com/0xsksingh/zkemployee/blob/master/server/employProofRequest.js) |
+
 
 ### How It Works:
 ZkEmployee 👨🏏 operates at the forefront of technology and work credential verification. Here's how our platform functions:

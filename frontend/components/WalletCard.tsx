@@ -11,7 +11,7 @@ const WalletCard = () => {
   const [pointer, setPointer] = useState(false);
   const [ciphertext, setCiphertext] = useState('');
   const [walletId, setWalletId] = useState('');
-  const [tokenId, setTokenId] = useState('');
+  const [tokenId, setTokenId] = useState(''); 
   const [destinationAddress, setDestinationAddress] = useState('');
   const [walletSetName, setWalletSetName] = useState('');
   const [creationWalletId, setCreationWalletId] = useState('');

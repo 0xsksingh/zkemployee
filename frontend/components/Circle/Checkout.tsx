@@ -21,7 +21,7 @@ const Checkout = ({
                     console.log("Res", res);
                 }}
                 options={{
-                    merchantName: {merchantName}
+                    merchantName: {merchantName},
                 }}
             />
         </div>

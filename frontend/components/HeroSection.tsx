@@ -38,7 +38,7 @@ export default function CallToActionWithAnnotation() {
             ZkEmployee 👨🏻‍💻 - Your Gateway to Verifiable Work Credentials
           </Heading>
           <Text color={"gray.500"}>
-            In a world filled with academic fraud and credential misrepresentation, ZkEmployee 👨🏻‍💻 stands as a beacon of trust and innovation. Our revolutionary platform leverages Polygon ID, Dock.io, and Circle Payments to securely deliver verifiable academic credentials directly to your PolygonID wallet. No more worries about counterfeit degrees or identity theft—ZkEmployee 👨🏻‍💻 is here to change the game.
+            In a world filled with work fraud and credential misrepresentation, ZkEmployee 👨🏻‍💻 stands as a beacon of trust and innovation. Our revolutionary platform leverages Polygon ID, Dock.io, and Circle Payments to securely deliver verifiable work credentials directly to your PolygonID wallet. No more worries about counterfeit degrees or identity theft—ZkEmployee 👨🏻‍💻 is here to change the game.
           </Text>
           <Stack
             direction={"column"}

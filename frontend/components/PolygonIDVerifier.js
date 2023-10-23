@@ -41,9 +41,6 @@ function PolygonIDVerifier({
   const serverUrl = isBrowser && window.location.href.startsWith("https")
   ? publicServerURL
   : localServerURL;
-  // const serverUrl = window.location.href.startsWith("https")
-  //   ? publicServerURL
-  //   : localServerURL;
 
   const getQrCodeApi = (sessionId) =>
     serverUrl + `/api/get-auth-qr?sessionId=${sessionId}`;

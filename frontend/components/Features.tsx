@@ -74,14 +74,14 @@ export default function ZkEmployeeInfo() {
             <Feature
               icon={<Icon as={IoLogoBitcoin} color={"green.500"} w={5} h={5} />}
               iconBg={useColorModeValue("green.100", "green.900")}
-              text={"Secure Identity Verification with Polygon ID"}
+              text={"Secure Employee Verification with Polygon ID"}
             />
             <Feature
               icon={
                 <Icon as={IoSearchSharp} color={"purple.500"} w={5} h={5} />
               }
               iconBg={useColorModeValue("purple.100", "purple.900")}
-              text={"Privacy-Preserving Proof Sharing"}
+              text={"Privacy-Preserving Employee Credentials Sharing"}
             />
           </Stack>
         </Stack>

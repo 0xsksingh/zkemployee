@@ -5,7 +5,7 @@ import "../styles/globals.css";
 import WithSubnavigation from "../components/Navbar"
 import SmallWithSocial from "../components/Footer";
 import { ToastContainer } from 'react-toastify';
-
+import 'react-toastify/dist/ReactToastify.css';
 // Fonts
 import '../public/fonts/satoshi.css';
 

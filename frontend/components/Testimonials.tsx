@@ -94,7 +94,7 @@ export default function Testimonials() {
       <Container maxW={"7xl"} py={16} as={Stack} spacing={12}>
         <Stack spacing={0} align={"center"}>
           <Heading>What Our Users Say</Heading>
-          <Text>Discover why our users love ZkEmployee 👨🏻‍💻.</Text>
+          <Text>Discover why our users love ZkEmployee 👨🏻‍💻 for verifiable work credentials.</Text>
         </Stack>
         <Stack
           direction={{ base: "column", md: "row" }}
@@ -102,47 +102,41 @@ export default function Testimonials() {
         >
           <Testimonial>
             <TestimonialContent>
-              <TestimonialHeading>University Director Views</TestimonialHeading>
+              <TestimonialHeading>HR Manager Feedback</TestimonialHeading>
               <TestimonialText>
-              &quot; ZkEmployee 👨🏻‍💻 has revolutionized the way we handle academic credentials. It is secure, efficient, and a game-changer for universities &quot;
+                &quot;ZkEmployee 👨🏻‍💻 has transformed our work verification process. It's secure, efficient, and essential for HR departments.&quot;
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
-              src={
-                "URL_TO_DIRECTOR_IMAGE"
-              }
-              name={"John Smith"}
-              title={"University Director"}
+              src={"https://previews.123rf.com/images/jackf/jackf1706/jackf170600720/79632953-happy-female-employee-having-productive-day-at-work-in-office.jpg"}
+              name={"Emily Williams"}
+              title={"HR Manager"}
             />
           </Testimonial>
           <Testimonial>
             <TestimonialContent>
-              <TestimonialHeading>CEO`&apos;` Appreciation</TestimonialHeading>
+              <TestimonialHeading>Company CEO's View</TestimonialHeading>
               <TestimonialText>
-              &quot;As a CEO, I found ZkEmployee 👨🏻‍💻 incredibly easy and secure to verify academic credentials. It streamlines our hiring process and ensures trust in our candidates.&quot;
+                &quot;As a CEO, I found ZkEmployee 👨🏻‍💻 incredibly easy and secure to verify work credentials. It streamlines our hiring process and ensures trust in our employees.&quot;
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
-              src={
-                "URL_TO_CEO_IMAGE"
-              }
-              name={"Jane Cooper"}
-              title={"CEO at ABC Corporation"}
+              src={"https://image1.masterfile.com/getImage/NjMyLTA4Njk4NDY3ZW4uMDAwMDAwMDA=AHznwE/632-08698467en_Masterfile.jpg"}
+              name={"John Doe"}
+              title={"CEO at XYZ Corporation"}
             />
           </Testimonial>
           <Testimonial>
             <TestimonialContent>
-              <TestimonialHeading>Student `&apos;` Testimonial</TestimonialHeading>
+              <TestimonialHeading>Employee Testimonial</TestimonialHeading>
               <TestimonialText>
-              &quot;ZkEmployee 👨🏻‍💻 has made my academic journey more secure and convenient. I can now easily access and share my academic proofs while protecting my privacy.&quot;
+                &quot;ZkEmployee 👨🏻‍💻 has made my work journey more secure and convenient. I can easily access and share my work credentials while protecting my privacy.&quot;
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
-              src={
-                "URL_TO_STUDENT_IMAGE"
-              }
-              name={"Alice Johnson"}
-              title={"Student"}
+              src={"https://img.freepik.com/premium-photo/portrait-successful-business-woman-suit-gray-isolated-background-serious-office-female-worker-manager-employees-female-employee-young-secretary_545934-23090.jpg"}
+              name={"Sarah Smith"}
+              title={"Employee"}
             />
           </Testimonial>
         </Stack>
@@ -150,3 +144,4 @@ export default function Testimonials() {
     </Box>
   );
 }
+

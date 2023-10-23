@@ -5,27 +5,36 @@ import { getUnixTime } from 'date-fns/fp';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Router, { useRouter } from '../../node_modules/next/router';
-// Here we're hard-coding a schema
+import { toast } from 'react-toastify';
+import {
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+} from '@chakra-ui/react';
 // you can find sample schemas at https://github.com/iden3/claim-schema-vocab/blob/main/schemas/json
 // or you can create a custom schema using the schema builder: https://certs.dock.io/schemas
-const sampleSchema = {
-    url: 'https://schema.dock.io/UniversityDegreesVC5-V5-1693754749459.json', // Updated schema URL
-    name: 'University Degrees VC-4', // Updated schema name
+const EmploymentSchema = {
+    url: 'https://schema.dock.io/ProofOfEmployment-V1-1698558436855.json', // Updated schema URL
+    name: 'Proof Of Employment', // Updated schema name
     populateFunc(data) {
       // Updated populateFunc to match the new schema
       return {
-        semesterNumber: data.subject.semesterNumber,
-        graduationDate: data.subject.graduationDate,
-        gPA: data.subject.gPA,
-        issuer: data.subject.issuer,
-        lastName: data.subject.lastName,
-        firstName: data.subject.firstName,
+        issuanceDate: data.subject.issuanceDate,
+        issuer: data.subject.numberOfYearsWorkedInTheCompany,
+        designation: data.subject.designation,
+        companyName: data.subject.companyName,
         id: data.subject.id,
       };
     },
   };
-  
-// https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json/KYCAgeCredential-v2.json
+
+  const axiosHeaders = {
+    headers: {
+      'DOCK-API-TOKEN': process.env.NEXT_PUBLIC_APP_DOCK_API_TOKEN,
+    },
+  };
 
 export default function Home() {
   const router = useRouter();
@@ -33,14 +42,11 @@ export default function Home() {
   const [issuerName, setIssuerName] = useState(id);
   const [issuerProfile, setIssuerProfile] = useState();
   const [credentialData, setCredentialData] = useState({
-    schema: sampleSchema.url,
+    schema: EmploymentSchema.url,
     subject: {
-      semesterNumber: 3, // Set default values or leave them empty as needed
-      graduationDate: '',
-      gPA: '',
-      issuer: '',
-      lastName: '',
-      firstName: '',
+      companyName: '',
+      designation: '',
+      issuanceDate: getUnixTime(new Date()),
       id: '',
     },
   });
@@ -51,8 +57,17 @@ export default function Home() {
     e.preventDefault();
     try {
       // Make a request to fetch the DID information
-      const { data } = await axios.get(`../api/get-did/${did}`);
-      setDidInfo(data);
+      const encodedDid = encodeURIComponent(did);
+      console.log(encodedDid);
+      const apiUrl = `https://api-testnet.dock.io/dids/${encodedDid}`;
+  
+      // Now, make the API request using apiUrl
+      // const data  = await axios.get('https://api-testnet.dock.io/dids/did%3Apolygonid%3Apolygon%3Amumbai%3A2qD9vqm2pmDyoN6KjxA5EoQLhBt6jd4vdrZoULopCv', axiosHeaders);
+  
+      const didResp = await axios.get(apiUrl, axiosHeaders);
+      console.log(didResp);
+      toast.success(`DID fetched successfully 🪔`);
+      setDidInfo(didResp.data);
     } catch (error) {
       console.error(error);
     }
@@ -62,6 +77,7 @@ export default function Home() {
   async function handleGenerateProfileSubmit(e) {
     e.preventDefault();
     const { data } = await axios.post('../api/create-did/', { issuerName });
+    toast.success(`${data.did} created successfully 🚀`);
     console.log(data);
     setIssuerProfile(data);
   }
@@ -72,16 +88,21 @@ export default function Home() {
 
     // main code to create a credential request
     const credential = {
-      schema: sampleSchema.url,
+      schema: EmploymentSchema.url,
       issuer: issuerProfile.did,
-      name: sampleSchema.name,
-      type: ['VerifiableCredential', sampleSchema.name],
-      subject: sampleSchema.populateFunc(credentialData)
+      name: EmploymentSchema.name,
+      type: ['VerifiableCredential', EmploymentSchema.name],
+      subject: EmploymentSchema.populateFunc(credentialData)
     };
-
+    toast.success(`Credential request created successfully 🚀`);
     const { data } = await axios.post('../../api/create-credential', credential);
+
     console.log(data);
     setClaimQR(data.qrUrl);
+  }
+
+  const setthisup = (did) => {
+    setIssuerProfile(did);
   }
 
   // first screen
@@ -168,6 +189,10 @@ export default function Home() {
             className="block w-full bg-blue-600 mt-5 py-2 rounded-full hover:bg-blue-700 hover:-translate-y-1 transition-all duration-250 text-white font-semibold mb-2">
             Get DID Information
           </button>
+
+          <button onClick={() => setthisup(did)} className="block w-full bg-blue-600 mt-5 py-2 rounded-full hover:bg-blue-700 hover:-translate-y-1 transition-all duration-250 text-white font-semibold mb-2">
+            Use this as Issuer issuerprofile
+          </button>
         </form>
 
         {/* Display DID information */}
@@ -203,52 +228,83 @@ export default function Home() {
                 width: '100%',
               }}>
               <h1 className="text-white font-bold text-4xl">
-                KYC Age Credential Example
+                Employee Credential 
               </h1>
 
               <p className="text-white mt-1">
-                We&apos;ll issue a KYC Age Credential for which we need a birthdate.
+                We&apos;ll issue a ZK Verifable Empoloyee Credential to our Employees.
               </p>
               <br />
               <br />
             </div>
           </div>
+
           <div
             className="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8"
             style={{ width: '100%' }}>
             <div className="w-full px-8 md:px-32 lg:px-24">
-              <form
-                onSubmit={handleCreateCredentialRequest}
-                className="p-5"
-                style={{ maxWidth: '500px', margin: '0 auto' }}>
-                <h1 className="text-gray-800 font-bold text-2xl mb-6">Enter a date of birth</h1>
-                <div className="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
-                  <DatePicker
-                    id="dob"
-                    className=" pl-2 w-full outline-none border-none"
-                    name="dob"
-                    selected={credentialData.subject.dob}
-                    onSelect={(date) => {
+              <Box p="4">
+              <form onSubmit={handleCreateCredentialRequest}>
+                <FormControl>
+                  <FormLabel>Company Name</FormLabel>
+                  <Input
+                    type="text"
+                    value={credentialData.subject.companyName}
+                    onChange={(e) =>
                       setCredentialData({
                         ...credentialData,
                         subject: {
                           ...credentialData.subject,
-                          dob: date
-                        }
-                      });
+                          companyName: e.target.value,
+                        },
+                      })
                     }
-                  }
                   />
-                </div>
+                </FormControl>
 
-                <button
+                <FormControl>
+                  <FormLabel>Designation</FormLabel>
+                  <Input
+                    type="text"
+                    value={credentialData.subject.designation}
+                    onChange={(e) =>
+                      setCredentialData({
+                        ...credentialData,
+                        subject: {
+                          ...credentialData.subject,
+                          designation: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+
+                <FormControl>
+                  <FormLabel>Employee ID</FormLabel>
+                  <Input
+                    type="text"
+                    value={credentialData.subject.id}
+                    onChange={(e) =>
+                      setCredentialData({
+                        ...credentialData,
+                        subject: {
+                          ...credentialData.subject,
+                          id: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </FormControl>
+
+                <Button
                   type="submit"
-                  disabled={!credentialData.subject.dob}
-                  className="block w-full bg-blue-600 mt-5 py-2 rounded-full hover:bg-blue-700 hover:-translate-y-1 transition-all duration-250 text-white font-semibold mb-2">
+                  colorScheme="teal"
+                  mt="4"
+                >
                   Create Credential Request
-                </button>
-
+                </Button>
               </form>
+              </Box>
             </div>
           </div>
         </div>
@@ -258,7 +314,7 @@ export default function Home() {
 
     return (
       <>
-        <div className="flex flex-col-reverse lg:flex-row lg:h-screen">
+        <div className="flex flex-col-reverse lg:flex-row lg:h-screen">``
           <div
             className="lg:flex w-full lg:w-1/2 justify-around items-center text-center bg-zinc-900"
             style={{
@@ -278,8 +334,7 @@ export default function Home() {
               </h1>
 
               <p className="text-white mt-1">
-                Share this link with the recipient. They will be presented with a QR code they can scan to begin the import
-                flow in their Polygon ID wallet.
+                Share this link with the Employees. They will be presented with a QR code they can scan to get the credentials in their Polygon ID wallet.
               </p>
               <br />
               <br />

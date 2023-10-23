@@ -274,11 +274,11 @@ const NAV_ITEMS: Array<NavItem> = [
         label: "Employee",
         subLabel: "Are you a Employee?",
         href: "/employee",
-      },
+      }
     ],
   },
   {
     label: "Pay Fees",
-    href: "/pay",
+    href: "/company/pay/circle",
   },
 ]

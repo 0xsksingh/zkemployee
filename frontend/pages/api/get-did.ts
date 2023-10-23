@@ -8,7 +8,7 @@ const axiosHeaders = {
   },
 };
 
-export default async (req, res) => {
+export default async (req , res) => {
 
   if (req.method !== 'GET') {
     return res.error('Method Not Allowed', 405);
