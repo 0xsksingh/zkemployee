@@ -91,7 +91,6 @@ export default function WithSubnavigation() {
               {colorMode === 'light' ? <FaRegMoon /> : <FaRegSun />}
             </Button>
           </div>
-          <h2>Connect Wallet</h2>
         </Stack>
       </Flex>
 
@@ -269,12 +268,12 @@ const NAV_ITEMS: Array<NavItem> = [
       {
         label: "Company",
         subLabel: "Are you a Company?",
-        href: "/chooseuniversity",
+        href: "/choosecompany",
       },
       {
         label: "Employee",
         subLabel: "Are you a Employee?",
-        href: "/enrolleduniv",
+        href: "/employee",
       },
     ],
   },

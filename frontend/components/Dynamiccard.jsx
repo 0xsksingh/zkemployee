@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 
-export default function Dynamiccard({ name, location , students, imageUrl, avatarUrl , url }) {
+export default function Dynamiccard({ name, location , employees, imageUrl, avatarUrl , url }) {
   return (
     <Center py={6}>
       <Box
@@ -25,7 +25,7 @@ export default function Dynamiccard({ name, location , students, imageUrl, avata
         overflow={'hidden'}
       >
         <Image
-          h={'120px'}
+          h={'200px'}
           w={'full'}
           src={imageUrl}
           objectFit="cover"
@@ -51,14 +51,14 @@ export default function Dynamiccard({ name, location , students, imageUrl, avata
 
           <Stack direction={'row'} justify={'center'} spacing={6}>
             <Stack spacing={0} align={'center'}>
-              <Text fontWeight={600}>{students}</Text>
+              <Text fontWeight={600}>{employees}</Text>
               <Text fontSize={'sm'} color={'gray.500'}>
-                Students
+                employees
               </Text>
             </Stack>
           </Stack>
 
-          <Link href="/university/[id]" as={`/university/${url}`} passHref>
+          <Link href="/company/[id]" as={`/company/${url}`} passHref>
             <Button
               w={'full'}
               mt={8}
@@ -70,7 +70,23 @@ export default function Dynamiccard({ name, location , students, imageUrl, avata
                 boxShadow: 'lg',
               }}
             >
-              Select ✅
+              Issue VCs to Employees ✅
+            </Button>
+          </Link>
+
+          <Link href="/company/pay/[id]" as={`/company/pay/${url}`} passHref>
+            <Button
+              w={'full'}
+              mt={8}
+              bg={useColorModeValue('#151f21', 'gray.900')}
+              color={'white'}
+              rounded={'md'}
+              _hover={{
+                transform: 'translateY(-2px)',
+                boxShadow: 'lg',
+              }}
+            >
+              Pay to your employees 💴
             </Button>
           </Link>
         </Box>

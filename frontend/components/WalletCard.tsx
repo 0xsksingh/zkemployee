@@ -1,4 +1,3 @@
-// components/WalletCard.js
 import { Box, Heading, Input, Button, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import { useState , useEffect} from 'react';

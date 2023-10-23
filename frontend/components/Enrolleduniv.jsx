@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import Link from 'next/link';
 
-export default function Enrolleduniv({ name, location , students, imageUrl, avatarUrl , url }) {
+export default function Enrolleduniv({ name, location , employees, imageUrl, avatarUrl , url }) {
     return (
     <Center py={6}>
       <Box
@@ -51,14 +51,14 @@ export default function Enrolleduniv({ name, location , students, imageUrl, avat
 
           <Stack direction={'row'} justify={'center'} spacing={6}>
             <Stack spacing={0} align={'center'}>
-              <Text fontWeight={600}>{students}</Text>
+              <Text fontWeight={600}>{employees}</Text>
               <Text fontSize={'sm'} color={'gray.500'}>
-                Students
+                employees
               </Text>
             </Stack>
           </Stack>
 
-          <Link href="/students/[id]" as={`/students/${url}`} passHref>
+          <Link href="/employees/[id]" as={`/employees/${url}`} passHref>
             <Button
               w={'full'}
               mt={8}
@@ -70,7 +70,7 @@ export default function Enrolleduniv({ name, location , students, imageUrl, avat
                 boxShadow: 'lg',
               }}
             >
-              Select ✅
+              Verify ✅
             </Button>
           </Link>
         </Box>
