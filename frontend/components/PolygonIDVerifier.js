@@ -99,6 +99,9 @@ function PolygonIDVerifier({
     }
   }, [socketEvents]);
 
+
+  console.log(qrCodeData,"qr code data");
+
   // callback, send verification result back to app
   const reportVerificationResult = (result) => {
     onVerificationResult(result);
@@ -151,7 +154,6 @@ function PolygonIDVerifier({
                     <QRCode value={JSON.stringify(qrCodeData)} />
                   </Center>
                 )}
-
               {qrCodeData.body?.scope[0].query && (
                 <p>Type: {qrCodeData.body?.scope[0].query.type}</p>
               )}

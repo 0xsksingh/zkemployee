@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { createPublicClient, http } from "viem";
 import { polygonZkEvmTestnet } from "viem/chains";
 import {
@@ -14,6 +13,7 @@ import {
   VStack,
   InputGroup,
   Input,
+  Text,
   Select,
 } from "@chakra-ui/react";
 import {
@@ -25,6 +25,7 @@ import {
 import demoAbi from "./demoSmartContract/demoAbi.json";
 import { Circle, CircleEnvironments, PaymentIntentCreationRequest } from "@circle-fin/circle-sdk";
 import Checkout from "./Circle/Checkout";
+import WalletCard from "./WalletCard";
 
 function VcGatedDapp() {
   const chain = polygonZkEvmTestnet;
@@ -120,7 +121,7 @@ function VcGatedDapp() {
   const [loading, setLoading] = useState(false);
 
   const circle = new Circle(
-    "SAND_API_KEY:59f07ffab17d4f6b83ba00efceb85216:10ccefc2d0f30faba312b4e51bf8fbaf",
+    "SAND_API_KEY:6e665bb020f904cd284737da1468065c:e8525563c6cdb4d81fd551d1a7d01e84",
     CircleEnvironments.sandbox // API base url
   );
 
@@ -136,6 +137,7 @@ function VcGatedDapp() {
           amount: amount,
           currency: currency,
         },
+        
       });
 
     console.log("Checkout session created", createCheckoutSessionRes)
@@ -149,69 +151,19 @@ function VcGatedDapp() {
       <Box background="black" color="white" py={4}>
         <Container maxW={"80%"}>
           <Flex justifyContent="space-between">
-            <Heading>My VC Gated Dapp</Heading>
-            <ConnectButton showBalance={false} />
+            <Heading>Welcome Company Officials</Heading>
           </Flex>
         </Container>
       </Box>
 
       <Box>
         <Container maxW={"80%"} py={4}>
-          <Button onClick={() => setShowConnectionInfo(!showConnectionInfo)}>
-            {showConnectionInfo ? "Hide" : "Show"} connection information
-          </Button>
-          {showConnectionInfo && (
-            <Box py={4}>
-              {addressIsConnected ? (
-                <p>Address {connectedAddress} is connected to this dapp</p>
-              ) : (
-                <p>
-                  No account connected. Connect wallet to interact with dapp
-                </p>
-              )}
 
-              {publicClient ? (
-                <ul>
-                  <li>
-                    Currently using a{" "}
-                    <a
-                      href="https://viem.sh/docs/clients/public.html"
-                      target="_blank"
-                    >
-                      public client
-                    </a>{" "}
-                    with Chain: {publicClient?.chain?.name} and Chain ID:{" "}
-                    {publicClient?.chain?.id}
-                  </li>
-
-                  <li>
-                    The current block number is {currentBlockNumber?.toString()}
-                  </li>
-                </ul>
-              ) : (
-                <>
-                  Please install{" "}
-                  <a href="https://metamask.io/" target="_blank">
-                    Metamask
-                  </a>
-                </>
-              )}
-            </Box>
-          )}
           <div>
-            <Card my={4} p={4}>
-              <Center>
-                <VStack>
-                  <Heading>Counter Dapp</Heading>
-
-                  <p>The current count is</p>
-                  <Heading>{isLoading ? <Spinner></Spinner> : count}</Heading>
-                  <Button onClick={() => incrementCounter()}>
-                    Increment counter
-                  </Button>
-                </VStack>
-              </Center>
-            </Card>
+          <Container maxW="xl" centerContent>
+            <Text as="h1" fontSize="2xl" mt={4}>My Wallet</Text>
+            <WalletCard />
+          </Container>
 
 
             <div className="flex flex-col md:flex-row">
@@ -249,45 +201,6 @@ function VcGatedDapp() {
                 {data && <Checkout data={data} />}
               </div>
             </div>
-
-
-
-            <ul>
-              <li>
-                Check out the Counter{" "}
-                <a
-                  href={`https://testnet-zkevm.polygonscan.com/address/${myZkEVMSmartContractAddress}`}
-                  target="_blank"
-                >
-                  contract on Polygonscan
-                </a>{" "}
-                and the{" "}
-                <a
-                  href="https://github.com/oceans404/fullstack-zkevm/blob/complete/contracts/Counter.sol"
-                  target="_blank"
-                >
-                  {" "}
-                  contract code on Github
-                </a>
-              </li>
-              <li>
-                You need Polygon zkEVM Testnet ETH to update the counter value.{" "}
-                <a
-                  href="https://www.youtube.com/watch?v=eYZAPkTCgwg"
-                  target="_blank"
-                >
-                  Here's how to Get Polygon zkEVM Testnet ETH
-                </a>{" "}
-                Use the{" "}
-                <a
-                  href="https://wallet.polygon.technology/?redirectOnConnect=%2FzkEVM-Bridge%2Fbridge"
-                  target="_blank"
-                >
-                  Native Bridge
-                </a>{" "}
-                to bridge Ethereum Goerli ETH to Polygon zkEVM testnet ETH
-              </li>
-            </ul>
           </div>
         </Container>
       </Box>

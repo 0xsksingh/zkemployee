@@ -10,8 +10,10 @@ function App() {
   const [provedAccessBirthday, setProvedAccessBirthday] = useState(false);
   return (
     <>
-      {provedAccessBirthday ? (
+      {!provedAccessBirthday ? (
+        <>
         <VcGatedDapp />
+        </>
       ) : (
         <Center className="vc-check-page">
           <Container>

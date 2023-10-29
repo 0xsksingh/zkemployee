@@ -3,8 +3,8 @@ const { auth, resolver, loaders } = require("@iden3/js-iden3-auth");
 const getRawBody = require("raw-body");
 const { Server } = require("socket.io");
 const cors = require("cors");
-const { humanReadableAuthReason, universityProofRequest } = require("./universityProofRequest");
-
+const { humanReadableAuthReason, proofRequest } = require("./universityProofRequest");
+// const { humanReadableAuthReason, proofRequest } = require("./proofRequest");
 require("dotenv").config();
 
 const app = express();
@@ -87,7 +87,7 @@ async function getAuthQr(req, res) {
 
   const scope = request.body.scope ?? [];
   console.log("scope", scope);
-  request.body.scope = [...scope, universityProofRequest];
+  request.body.scope = [...scope, proofRequest];
   console.log("request", request);
   // store this session's auth request
   authRequests.set(sessionId, request);
@@ -121,6 +121,8 @@ async function handleVerification(req, res) {
   const mumbaiContractAddress = "0x134B1BE34911E39A8397ec6289782989729807a4";
   const keyDIR = "./keys";
 
+  console.log(process.env.RPC_URL_MUMBAI, mumbaiContractAddress);
+  
   const ethStateResolver = new resolver.EthStateResolver(
     process.env.RPC_URL_MUMBAI,
     mumbaiContractAddress
