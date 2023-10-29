@@ -3,7 +3,7 @@ const { auth, resolver, loaders } = require("@iden3/js-iden3-auth");
 const getRawBody = require("raw-body");
 const { Server } = require("socket.io");
 const cors = require("cors");
-const { humanReadableAuthReason, proofRequest } = require("./universityProofRequest");
+const { humanReadableAuthReason, proofRequest } = require("./employProofRequest");
 // const { humanReadableAuthReason, proofRequest } = require("./proofRequest");
 require("dotenv").config();
 
