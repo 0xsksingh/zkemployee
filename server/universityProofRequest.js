@@ -1,8 +1,8 @@
-const { UniversityDegreesVC6 } = require("./vcHelpers/universityCredential");
+const { EmployeeVC } = require("./vcHelpers/EmployeeVC");
 
 // Design your custom authentication requirements here
 
-const humanReadableAuthReason = "Your custom authentication reason here";
+const humanReadableAuthReason = "Authenticate that you work in this company ?";
 
 // const credentialSubject = {
 //   semesterNumber: {
@@ -12,7 +12,7 @@ const humanReadableAuthReason = "Your custom authentication reason here";
 //   // Add other fields as required by your schema
 // };
 
-const proofRequest = UniversityDegreesVC6();
+const proofRequest = EmployeeVC();
 
 module.exports = {
   humanReadableAuthReason,
