@@ -2,47 +2,48 @@
 
 *Unlocking the Future of Work Verification with Polygon ID, Dock.io, and Circle Payments*
 
+ZkEmployee 👨🏻‍💻 introduces a groundbreaking solution for verifiable work credentials. We enable employees to selectively disclose their company names and years of work experience. Once their proofs are successfully verified with Polygon ID, a world of possibilities opens up. Employees can now seamlessly send and receive money using Circle's programmable wallets, making financial transactions easier than ever.
 
 https://certs.dock.io/
 
 ### Introduction:
-In a world filled with academic fraud and credential misrepresentation, ZkEmployee 👨🏻‍💻 stands as a beacon of trust and innovation. Our revolutionary platform leverages Polygon ID, Dock.io, and Circle Payments to securely deliver verifiable academic credentials directly to your PolygonID wallet. No more worries about counterfeit degrees or identity theft—ZkEmployee 👨🏻‍💻 is here to change the game.
+In a world riddled with academic fraud and credential misrepresentation, ZkEmployee 👨🏻‍💻 emerges as a beacon of trust and innovation. Our revolutionary platform harnesses the power of Polygon ID, Dock.io, and Circle Payments to securely deliver verifiable work credentials to your PolygonID wallet. Say goodbye to counterfeit degrees and identity theft—ZkEmployee 👨🏻‍💻 is here to redefine work verification.
 
 ### Problem Statement:
-In today's society, the prevalence of fraudulent academic degrees, especially in rural areas, poses a significant problem. The ease with which traditional paper degrees can be manipulated and forged leads to a lack of transparency and accountability in educational qualifications.
+In today's society, fraudulent academic degrees, particularly in rural areas, present a significant challenge. The ease with which traditional paper degrees can be manipulated and forged leads to a lack of transparency and accountability in educational qualifications.
 
 When individuals apply for jobs, companies face a dilemma: either blindly trust the information provided on resumes or invest time and resources into verifying each candidate's academic background with universities. This inefficiency not only hampers the hiring process but also allows dishonest individuals to thrive.
 
 ### Features:
-#### 1. Verifiable Credentials for Universities:
-ZkEmployee 👨🏻‍💻 empowers universities to create and issue verified digital credentials for their students. With our platform, educational institutions can seamlessly transition from paper-based degrees to secure, blockchain-backed certificates.
+#### 1. Verifiable Work Credentials:
+ZkEmployee 👨🏻‍💻 empowers companies and enterprises to create and issue verified work credentials for their employees. With our platform, organizations can transition from traditional work experience records to secure, blockchain-backed certificates.
 
 #### 2. Secure Identity Verification with Polygon ID:
-Students can authenticate their academic credentials using Polygon ID—a pioneering identity solution that employs zero-knowledge proofs. This ensures that only individuals with valid identity credentials from their respective universities can access and claim their digital degrees.
+Employees can authenticate their work credentials using Polygon ID—a cutting-edge identity solution employing zero-knowledge proofs. This ensures that only individuals with valid work history can access and claim their digital credentials.
 
 #### 3. Privacy-Preserving Proof Sharing:
-Our platform enables students to share only the necessary attributes, such as university name and student name, when providing proof of their academic qualifications. This privacy-centric approach ensures that personal data remains protected while still allowing for verification.
+Our platform enables employees to share only the necessary attributes, such as company names and years of work experience, when providing proof of their work qualifications. This privacy-centric approach ensures that personal data remains protected while still allowing for verification.
 
-#### 4. Empowering Global Financial Transactions using Circle:
-Having your identity and semester degrees on your PolygonID wallet opens up a world of possibilities. Users can securely pay for college fees, mess fees, and more via Circle Payments. Circle offers global payment solutions, including inbound and outbound payments, as well as cryptocurrency and card payment options using USDC.
+#### 4. Empowering Financial Transactions using Circle:
+With your work credentials stored in your PolygonID wallet, financial transactions become a breeze. Users can securely pay and receive money with ease using Circle Payments. Circle offers global payment solutions, including cryptocurrency and card payment options using USDC, making financial transactions smoother than ever.
 
 ### How It Works:
-ZkEmployee 👨🏻‍💻 operates at the intersection of cutting-edge technology and academic verification. Here's how our platform functions:
+ZkEmployee 👨🏏 operates at the forefront of technology and work credential verification. Here's how our platform functions:
 
-1. **University Credential Issuance:** Companies and institutions issue verified credentials through our platform, powered by Dock.io Polygon ID credentials.
+1. **Credential Issuance:** Companies and institutions issue verified work credentials through our platform, powered by Dock.io Polygon ID credentials.
 
-2. **Employee Authentication:** Employees authenticate their identity and academic credentials using Polygon ID. This step ensures that only eligible individuals can access and claim their digital degrees.
+2. **Employee Authentication:** Employees authenticate their identity and work credentials using Polygon ID, ensuring only eligible individuals can access the platform.
 
-3. **Secure Proof Delivery:** Once authenticated, Employees can effortlessly retrieve their degrees as verifiable proofs in their Polygon ID app. These proofs can be used for job applications and other verification purposes.
+3. **Secure Proof Delivery:** Once authenticated, employees can effortlessly retrieve their work credentials as verifiable proofs in their Polygon ID app. These proofs can be used for job applications and other verification purposes.
 
 ### Why Polygon ID?
-Verifiable credentials meet the Web3 era, bringing real-world data into the blockchain realm. Polygon ID is at the forefront of this revolution by allowing users to use zero-knowledge proofs to interact with smart contracts. It adheres to the "Verifiable Credentials" (VC) and "Decentralized Identifiers" (DID) W3C standards, enhancing interoperability for decentralized applications.
+Verifiable credentials meet the demands of the Web3 era, bringing real-world data to the blockchain. Polygon ID leads this revolution by allowing users to utilize zero-knowledge proofs for smart contract interactions. It adheres to the "Verifiable Credentials" (VC) and "Decentralized Identifiers" (DID) W3C standards, enhancing interoperability for decentralized applications.
 
 Polygon ID comprises three essential components:
-- **Identity Holder:** Students pursuing university courses.
-- **Verifier:** Our Dapp, ZkEmployee 👨🏻‍💻, responsible for credential checks and verification.
-- **Issuer:** Universities, institutes, and companies that issue verified credentials to students.
+- **Identity Holder:** Employees with work history.
+- **Verifier:** Our Dapp, ZkEmployee 👨🏏, responsible for credential checks and verification.
+- **Issuer:** Companies and institutions issuing verified work credentials.
 
-Issuer organizations issue Verifiable Credentials (VCs) through our platform, powered by Dock.io Polygon ID credentials, ensuring the utmost security and trustworthiness.
+Issuer organizations issue Verifiable Work Credentials (VWCs) through our platform, powered by Dock.io Polygon ID credentials, ensuring the highest level of security and trust.
 
-Join us on this transformative journey as we redefine academic verification with ZkEmployee 👨🏻‍💻, Polygon ID, and Circle Payments. Say goodbye to academic fraud and hello to a secure, transparent future.
+Join us on this transformative journey as we redefine work verification with ZkEmployee 👨🏻‍💻, Polygon ID, and Circle Payments. Say farewell to work qualification fraud and welcome a secure and transparent future ahead.
